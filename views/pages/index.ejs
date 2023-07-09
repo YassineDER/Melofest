@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Melofest - World Rythms</title>
+  <link rel="stylesheet" href="/index.css">
+</head>
+
+<body>
+  <!-- navbar -->
+  <%- include('../partials/navbar') %>
+
+  <!-- logo -->
+    <div style="text-align: center">
+      <img src="/logo.png" alt="Logo">
+    </div>
+
+    <!-- Edition and dates -->
+    <div style="width: 150vh" class="container">
+      <div class="logo-text">
+        <h3>77<sup>th</sup> edition <br>
+          From 5 to 25 July 2023</h3>
+          <i class="fa-regular fa-circle-down fa-shake fa-lg" style="color: #bd02c0;"></i>
+      </div>
+    </div>
+
+    <br><br><br>
+
+    <!-- Marquee -->
+    <section class="enable-animation">
+      <div class="marquee">
+        <ul style="list-style-type: none" class="marquee__content">
+          <% for (var i =1; i <=6;  i++ ) { %>
+            <li><strong>MELOFEST LIVE STREAM</strong></li>
+            <% } %>
+        </ul>
+        <ul style="list-style-type: none" aria-hidden="true" class="marquee__content">
+          <% for (var i =1; i <=6;  i++ ) { %>
+            <li><strong>MELOFEST LIVE STREAM</strong></li>
+            <% } %>
+        </ul>
+      </div>
+    </section>
+    
+    <br><br><br>
+
+    <!-- Newsletter -->
+    <div style="width: 100% !important" class="container">
+      <h1 style="text-align: center; font-size: 3rem;">Newsletter</h1>
+    
+      <% for(let i = 0; i < articles.length; i += 3) { %>
+        <div class="row">
+          <% for(let j = i; j < Math.min(i + 3, articles.length); j++) { %>
+            <article>
+              <p><%= articles[j].date %></p>
+              <img src="<%= articles[j].photo %>" alt="Article Image">
+              <p><%= articles[j].tags %></p>
+              <h2><%= articles[j].title %></h2>
+              
+            </article>
+          <% } %>
+        </div>
+      <% } %>
+    </div>
+    
+
+    
+
+
+  
+
+
+</body>
+
+</html>
