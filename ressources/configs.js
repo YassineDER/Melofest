@@ -1,9 +1,10 @@
-//Using remote mysql server for educationnal purposes. change it to your own mysql server if necessary (sql import file is in /ressources)
+// You can change the config to your own local mysql server, for that you need the sql import file is in parent folder.
+
 const db = {
     database: {
-      host: 'db4free.net',
-      user: 'alinsandu',
-      password: 'melofestpwd',
+      host: 'localhost',
+      user: 'root',
+      password: '',
       database: 'melofest',
     },
   };
