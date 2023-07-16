@@ -8,6 +8,7 @@ body {
     transition: margin .2s ease-in;
 }
 
+/* wrapper */
 #wrapper {
     width: calc(100% - 120px);
     height: 60px;
@@ -52,7 +53,7 @@ body {
     display: inline-block;
     height: 60px;
     line-height: 60px;
-    padding: 0 30px;
+    padding: 0 20px;
 }
 
 #navigation li a {
@@ -75,14 +76,16 @@ article {
     box-sizing: border-box;
 }
 
+
 article p{
     color: whitesmoke;
-    margin-top: 6px;
+    margin: 4px;
+    font-size: large;
 }
 
-article h2{
+article h2, hr{
     color: #FC00FF;
-    cursor: pointer;
+    margin: 4px;
 }
 
 

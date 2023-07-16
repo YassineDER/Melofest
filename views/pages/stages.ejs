@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Melofest - Stages</title>
+    <link rel="stylesheet" href="/stages.css">
+    <link rel="stylesheet" href="/breadcrumb.css">
+</head>
+
+<body>
+    <%- include ('../partials/navbar') %>
+
+        <br>
+        <div class="container">
+            <!-- breadcrumb -->
+            <ul class="breadcrumb">
+                <li><a href="/">Home</a></li>
+                <li>Stages</li>
+            </ul>
+
+            <!-- Title -->
+            <div class="title">
+                <hr>
+                <h1> Stages </h1>
+                <hr>
+            </div>
+            <!-- Description -->
+            <p id="desc">Immerse yourself in an array of enchanting stages, each with its own unique atmosphere and
+                lineup of talented artists. From the main stage showcasing chart-topping acts to the intimate and
+                atmospheric settings of our smaller stages, there's something for every music lover. </p>
+
+            <!-- Stages -->
+            <% for(let i=0; i < stages.length; i +=2) { %>
+                <div class="row">
+                  <% for(let j=i; j < Math.min(i + 2, stages.length); j++) { %>
+                    <article>
+                      <img src="<%= stages[j].photo %>" alt="stage Image">
+                      <p><%= stages[j].district %></p>
+                      <h2><%= stages[j].name %></h2>
+                    </article>
+                  <% } %>
+                </div>
+              <% } %>              
+        </div>
+
+        <br>
+
+
+        <%- include ('../partials/footer') %>
+</body>
+
+</html>

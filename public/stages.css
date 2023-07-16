@@ -1,0 +1,56 @@
+body {
+    font-family: 'Khand', sans-serif;
+    background-image: url('/bg4.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    transition: margin .2s ease-in;
+}
+
+#desc{
+    font-size: 20px; 
+    text-align: center;
+    max-width: 75%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/* newsletter */
+.row {
+    display: flex;
+    justify-content: space-around;
+}
+
+article {
+    flex-basis: calc(45% - 10px);
+    padding: 21px;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+article h2 {
+    margin-top: 0;
+    margin-bottom: 0;
+    color: #FC00FF;
+}
+
+article p {
+    margin-top: 0;
+}
+
+article img {
+    width: 95%;
+    height: 250px;
+    margin-bottom: 10px;
+    transition: transform .2s ease-in;
+}
+
+article img:hover {
+    transform: scale(1.05);
+}
+
+article p:last-child {
+    margin-bottom: 0;
+}
+

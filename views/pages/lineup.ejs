@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>Melofest - World Rythms</title>
+    <title>Melofest - Lineup</title>
     <link rel="stylesheet" href="/lineup.css">
     <link rel="stylesheet" href="/breadcrumb.css">
 </head>
@@ -30,9 +30,9 @@
                 <span class="arrow"><i class="fas fa-chevron-right"></i></span>
                 <ul id="navigation">
                     <li><a href="#" data-filter="alphabetic" class="active">A-Z</a> </li>
-                    <% for (let i=5; i <=25; i++) { %>
-                        <li><a data-filter="<%= i %>/07/2023" href="#">
-                                <%= i %> Jul
+                    <% for (let i=1; i <=31; i++) { %>
+                        <li><a data-filter="<%= i %>/10/2023" href="#">
+                                <%= i %> Oct
                             </a> </li>
                         <% } %>
                 </ul>
@@ -72,11 +72,11 @@
 
 
     // Add active class to the current button (highlight it)
-    const navLinks = document.querySelectorAll("#nav li");
+    const navLinks = document.querySelectorAll("#navigation li");
     navLinks.forEach(link => {
         link.addEventListener("click", function (event) {
             event.preventDefault();
-            const activeLinks = document.querySelectorAll("#nav li a.active");
+            const activeLinks = document.querySelectorAll("#navigation li a.active");
             activeLinks.forEach(activeLink => {
                 activeLink.classList.remove("active");
             });
@@ -113,10 +113,10 @@
                 html += '<div class="row">' +
                     artists.slice(i, i + 3).map((artist) => `
                         <article>
+                            <p>${artist.type} - ${artist.stage}</p>
+                        <img src="${artist.photo}" alt="${artist.photo} Image"><hr>
                         <p>${artist.start}</p>
-                        <img src="${artist.photo}" alt="Article Image">
-                        <p>${artist.type} - ${artist.stage}</p>
-                        <h2>${artist.name}</h2>
+                        <h2>${artist.name}</h2><hr>
                         </article> `).join("") + "</div>";
         }
 
@@ -126,9 +126,9 @@
                     '<div class="row">' +
                     artists.slice(i, i + 3).map((artist) =>
                         `<article>
-              <img src="${artist.photo}" alt="Article Image">
+              <img src="${artist.photo}" alt="${artist.photo} Image"><hr>
               <p>${artist.type} - ${artist.stage}</p>
-              <h2>${artist.name}</h2>
+              <h2>${artist.name}</h2> <hr>
             </article> `).join("") + "</div>";
         }
         return html;

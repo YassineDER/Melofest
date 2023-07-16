@@ -12,6 +12,7 @@ body {
 h1{
     text-align: center;
     margin: 0 auto;
+    color: #fff;
 }
 
 .form-container {
@@ -22,10 +23,10 @@ h1{
     line-height: 1.2;
     color: #212529;
     text-align: left;
-    background-color: whitesmoke;
-    opacity: 0.97;
+    background-color: black;
+    opacity: 0.9;
     padding: 12px 18px 8px;
-    border: 1px solid #ced4da;
+    border: 1px solid #FC00FF;
     border-radius: 0.25rem;
     max-width: 50%;
 }
@@ -53,17 +54,17 @@ h1{
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
-    color: #495057;
-    background-color: #fff;
+    color: whitesmoke;
+    background-color: black;
     background-clip: padding-box;
-    border: 1px solid #ced4da;
+    border: 1px solid #FC00FF;
     outline: none;
     border-radius: 0.25rem;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .fcf-form-control:focus {
-    border: 1px solid #007bff;
+    border: 1px solid whitesmoke;
 }
 
 select.fcf-form-control[size], select.fcf-form-control[multiple] {
@@ -88,9 +89,6 @@ label.fcf-label {
     text-align: center;
     vertical-align: middle;
     cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
     user-select: none;
     background-color: transparent;
     border: 1px solid transparent;
@@ -114,27 +112,20 @@ label.fcf-label {
 
 .fcf-btn:focus, .fcf-btn.focus {
     outline: 0;
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
 .fcf-btn-primary {
     color: #fff;
-    background-color: #007bff;
-    border-color: #007bff;
+    background-color: #be00c1;
+    border: none;
 }
 
 .fcf-btn-primary:hover {
     color: #fff;
-    background-color: #0069d9;
-    border-color: #0062cc;
+    background-color: #FC00FF;
+    border: 1pt solid whitesmoke;
 }
 
-.fcf-btn-primary:focus, .fcf-btn-primary.focus {
-    color: #fff;
-    background-color: #0069d9;
-    border-color: #0062cc;
-    box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
-}
 
 .fcf-btn-lg, .fcf-btn-group-lg>.fcf-btn {
     padding: 0.5rem 1rem;

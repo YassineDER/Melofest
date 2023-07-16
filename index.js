@@ -72,6 +72,16 @@ app.get('/lineup/getSchedules', (req, res) => {
 });
 
 
+app.get('/stages', (req, res) => {
+    const query = "SELECT * FROM stage";
+    connection.query(query, (err, results) => {
+        if (err) {
+            console.log(err);
+            res.status(400).send({ error: err.message });
+        }
+        res.render('pages/stages', { stages: results });
+    });
+});
 
 // Contact page route
 app.get('/contact', (req, res) => { res.render('pages/contact')});
