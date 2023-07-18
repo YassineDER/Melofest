@@ -14,8 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Database connection
 const connection = mysql.createConnection(configs.database);
-connection.connect((err) => { if (err) throw err });
-
+connection.connect((err) => { if (err) throw err; });
 
 // Defining routes
 
@@ -32,31 +31,29 @@ app.get('/', (req, res) => {
 });
 
 
-
-// Lineup page route. Fetching the lineup from the database and render the EJS template with the retrieved lineup
+// Lineup page route. Fetching the lineup from the database and render the EJS template with the retrieved schedules
 app.get('/lineup', (req, res) => {
-    query = "SELECT A.name AS name, A.music_type AS type, A.photo as photo, St.name AS stage, DATE_FORMAT(Sch.start, '%W %d %M %Y at %H:%i') as start FROM artist A JOIN schedule Sch on A.artist_id = Sch.artist_id JOIN stage St on St.stage_id = Sch.stage_id ORDER BY name ASC";
-        connection.query(query, (err, results) => {
-            if (err) {
-                console.log(err);
-                res.status(400).send({ error: err.message });
-            }
-            res.render('pages/lineup', { artists: results , alphabetic: true})
-        });
+    const query = "SELECT A.name AS name, A.music_type AS type, A.photo as photo, St.name AS stage, DATE_FORMAT(Sch.start, '%W %d %M %Y at %H:%i') as start FROM artist A JOIN schedule Sch on A.artist_id = Sch.artist_id JOIN stage St on St.stage_id = Sch.stage_id ORDER BY name ASC";
+    connection.query(query, (err, results) => {
+        if (err) {
+            console.log(err);
+            res.status(400).send({ error: err.message });
+        }
+        res.render('pages/lineup', { artists: results, alphabetic: true });
+    });
 });
 
-
 app.get('/lineup/getSchedules', (req, res) => {
-    const dataFilter = req.headers["x-filter"]
+    const dataFilter = req.headers["x-filter"];
     let query = '';
-    if (dataFilter === 'alphabetic'){
+    if (dataFilter === 'alphabetic') {
         query = "SELECT A.name AS name, A.music_type AS type, A.photo as photo, St.name AS stage, DATE_FORMAT(Sch.start, '%W %d %M %Y at %H:%i') as start FROM artist A JOIN schedule Sch on A.artist_id = Sch.artist_id JOIN stage St on St.stage_id = Sch.stage_id ORDER BY name ASC";
         connection.query(query, (err, results) => {
             if (err) {
                 console.log(err);
                 res.status(400).send({ error: err.message });
             }
-            res.send( { artists: results , alphabetic: true})
+            res.send({ artists: results, alphabetic: true });
         });
     }
     else {
@@ -66,12 +63,13 @@ app.get('/lineup/getSchedules', (req, res) => {
                 console.log(err);
                 res.status(400).send({ error: err.message });
             }
-            res.send({ artists: results , alphabetic: false})
+            res.send({ artists: results, alphabetic: false });
         });
     }
 });
 
 
+// Stages page route
 app.get('/stages', (req, res) => {
     const query = "SELECT * FROM stage";
     connection.query(query, (err, results) => {
@@ -84,40 +82,41 @@ app.get('/stages', (req, res) => {
 });
 
 // Contact page route
-app.get('/contact', (req, res) => { res.render('pages/contact')});
+app.get('/contact', (req, res) => { res.render('pages/contact'); });
+
 
 // Contact form submission
 app.post('/send_contact', (req, res) => {
     const { name, email, message } = req.body;
 
     // Form validation
-    if (!name || !email || !message) 
-        return res.status(400).send({ error: 'All fields are required' });
+    if (!name || !email || !message)
+        return res.send({ error: 'All fields are required' });
     const nameRegex = /^[a-zA-Z\s-]+$/;
     if (!nameRegex.test(name))
-        return res.status(400).send({ error: 'Invalid name. Only letters, spaces and hyphens are allowed' });
+        return res.send({ error: 'Invalid name. Only letters, spaces and hyphens are allowed' });
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email))
-        return res.status(400).send({ error: 'Invalid email address' });
-    const msgRegex = /^[\w\s.,!?()\-'"&]+$/
+        return res.send({ error: 'Invalid email address' });
+    const msgRegex = /^[\w\s.,!?()\-'"&]+$/;
     if (!msgRegex.test(message))
-        return res.status(400).send({ error: 'Invalid message. Only letters, numbers and punctuation marks are allowed' });
+        return res.send({ error: 'Invalid message. Only letters, numbers and punctuation marks are allowed' });
 
     // Save the data to the database
     const query = 'INSERT INTO contact (name, email, message) VALUES (?, ?, ?)';
-    connection.query(query, [name, email, message], (err, results, fields) => {
+    connection.query(query, [name, email, message], (err) => {
         if (err) {
             console.log(err);
             res.status(400).send({ "success": false, error: err.message });
         }
-        res.status(200).send({"success": true});
+        res.status(200).send({ "success": true });
     });
 });
 
 // FAQ page route
-app.get('/faq', (req, res) => { res.render('pages/faq')});
+app.get('/faq', (req, res) => { res.render('pages/faq'); });
 
 
 
 // Start the server
-app.listen(5000, () => {console.log(`Server running on port 5000`)});
+app.listen(5000, () => { console.log(`Server running on port 5000`); });

@@ -70,7 +70,7 @@ div img {
     margin-top: 10px;
 }
 
-section {
+.marquee_container {
     background-color: black;
     font-size: 28px;
     color: white;

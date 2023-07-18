@@ -3,46 +3,46 @@
 
 <!-- Navbar -->
 <nav id="navbar" class="navbar js-navbar">
-  <ul class="menu">
-    <li>
-      <a style="justify-content: start" href="/"><img src="/logo.png" id="logo" alt="logo"></a>
-      <h3>1st - 31st October <br> Manchester, UK</h3>
-    </li>
-    
-    <li>
-      <a href="/lineup">Line up</a>
-    </li>
-    <li>
-      <a href="/stages">Stages / Areas</a>
-    </li>
-    <li>
-      <a href="/faq">FAQ</a>
-    </li>
-    <li>
-      <a href="/contact">Contact us</a>
-    </li>
-  </ul>
+    <ul class="menu">
+        <li>
+            <a style="justify-content: start" href="/"><img src="/logo.png" id="logo" alt="logo"></a>
+            <h3>1st - 31st October <br> Manchester, UK</h3>
+        </li>
+
+        <li>
+            <a href="/lineup">Line up</a>
+        </li>
+        <li>
+            <a href="/stages">Stages / Areas</a>
+        </li>
+        <li>
+            <a href="/faq">FAQ</a>
+        </li>
+        <li>
+            <a href="/contact">Contact us</a>
+        </li>
+    </ul>
 </nav>
 
 <!-- End Navigation Bar -->
 
 <script>
-  var bodyMargin = document.body.style.margin
-  // When the user scrolls the page, execute myFunction
-window.onscroll = function() {setSticky()};
+    var bodyMargin = document.body.style.margin;
+    // When the user scrolls the page, execute myFunction
+    window.onscroll = function () { setSticky(); }
 
-var navbar = document.getElementById("navbar");
-// Get the offset position of the navbar
-var sticky = navbar.offsetTop;
+    var navbar = document.getElementById("navbar");
+    // Get the offset position of the navbar
+    var sticky = navbar.offsetTop;
 
-// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
-function setSticky() {
-  if (window.pageYOffset >= sticky) {
-    navbar.classList.add("sticky")
-    document.body.style.margin = '0'
-  } else {
-    document.body.style.margin = bodyMargin
-    navbar.classList.remove("sticky");
-  }
-}
+    // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+    function setSticky() {
+        if (window.pageYOffset >= sticky) {
+            navbar.classList.add("sticky");
+            document.body.style.margin = '0';
+        } else {
+            document.body.style.margin = bodyMargin;
+            navbar.classList.remove("sticky");
+        }
+    }
 </script>

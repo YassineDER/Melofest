@@ -146,3 +146,15 @@ label.fcf-label {
 input[type="submit"].fcf-btn-block, input[type="reset"].fcf-btn-block, input[type="button"].fcf-btn-block {
     width: 100%;
 }
+
+#error p{
+    color: rgb(202, 0, 0);
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.form-container p{
+    color: whitesmoke;
+    text-align: center;
+    font-size: 1.1rem;
+}

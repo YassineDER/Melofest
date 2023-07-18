@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : dim. 16 juil. 2023 à 16:27
+-- Généré le : mar. 18 juil. 2023 à 16:34
 -- Version du serveur : 8.0.31
 -- Version de PHP : 8.0.26
 
@@ -87,15 +87,15 @@ CREATE TABLE IF NOT EXISTS `contact` (
   `message` text NOT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `contact`
 --
 
 INSERT INTO `contact` (`id`, `name`, `email`, `message`, `created_at`) VALUES
-(5, 'Yassine DERGAOUI', 'yassineyassine333@gmail.com', 'sdfghjkljhgfds', '2023-07-10 17:00:46'),
-(6, 'Yassine DERGAOUI', 'yassineyassine333@gmail.com', 'sadfghjkhgfdsa', '2023-07-10 17:09:36');
+(8, 'sdfghjgfds', 'sdsfghfds@gmail.com', 'frgtjkfldsdlfkgjhtjfkdls', '2023-07-18 16:30:13'),
+(9, 'sdfghjgfds', 'sdsfghfds@gmail.com', 'frgtjkfldsdlfkgjhtjfkdls', '2023-07-18 16:32:11');
 
 -- --------------------------------------------------------
 

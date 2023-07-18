@@ -132,6 +132,5 @@ h1{
 .title{
   margin: 16px;
   display: flex;
-  justify-content: baseline;
   align-items: center;
 }

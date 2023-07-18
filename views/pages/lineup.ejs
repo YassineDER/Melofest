@@ -46,94 +46,96 @@
 
         <br><br>
         <%- include('../partials/footer') %>
+
+        <script>
+            //init the page with the artists by alphabetic
+            let artistsTest = JSON.parse(`<%- JSON.stringify(artists) %>`);
+            document.querySelector('#artists').innerHTML = showArtists(artistsTest, true);
+        
+        
+            // Scroll to the left or right when clicking on the arrows
+            const navwidth = document.querySelector("#navigation");
+            document.querySelector(".arrow:first-of-type").addEventListener("click", function () {
+                navwidth.scrollBy({
+                    left: -200,
+                    behavior: 'smooth'
+                });
+            });
+            document.querySelector(".arrow:nth-of-type(2)").addEventListener("click", function () {
+                navwidth.scrollBy({
+                    left: 200,
+                    behavior: 'smooth'
+                });
+            });
+        
+        
+            // Add active class to the current button (highlight it)
+            const navLinks = document.querySelectorAll("#navigation li");
+            navLinks.forEach(link => {
+                link.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    const activeLinks = document.querySelectorAll("#navigation li a.active");
+                    activeLinks.forEach(activeLink => {
+                        activeLink.classList.remove("active");
+                    });
+                    this.querySelector("a").classList.add("active");
+                });
+            });
+        
+        
+            // Get the artists by date
+            document.querySelectorAll('#navigation li a').forEach(link => {
+                link.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    const dataFilter = event.target.getAttribute('data-filter');
+                    fetch('/lineup/getSchedules', { headers: { 'X-Filter': dataFilter } })
+                        .then(response => response.json())
+                        .then(data => {
+                            const artists = document.querySelector('#artists');
+                            artists.innerHTML = showArtists(data.artists, data.alphabetic);
+                        })
+                        .catch(error => console.log(error));
+                });
+            });
+        
+        
+            // Function: Get the artists by alphabetic or date
+            function showArtists(artists, alphabetic = true) {
+                let html = "";
+                //check if artists is empty
+                if (artists.length === 0)
+                    return '<br> <h2 style="text-align:center"> No schedules planned for this date </h2><br>';
+        
+                if (alphabetic) {
+                    for (let i = 0; i < artists.length; i += 3)
+                        html += '<div class="row">' +
+                            artists.slice(i, i + 3).map((artist) => `
+                                <article>
+                                    <p>${artist.type} - ${artist.stage}</p>
+                                <img src="${artist.photo}" alt="${artist.photo} Image"><hr>
+                                <p>${artist.start}</p>
+                                <h2>${artist.name}</h2><hr>
+                                </article> `).join("") + "</div>";
+                }
+        
+                else {
+                    for (let i = 0; i < artists.length; i += 3)
+                        html +=
+                            '<div class="row">' +
+                            artists.slice(i, i + 3).map((artist) =>
+                                `<article>
+                      <img src="${artist.photo}" alt="${artist.photo} Image"><hr>
+                      <p>${artist.type} - ${artist.stage}</p>
+                      <h2>${artist.name}</h2> <hr>
+                    </article> `).join("") + "</div>";
+                }
+                return html;
+            }
+        
+        </script>
 </body>
 
 
-<script>
-    //init the page with the artists by alphabetic
-    let artistsTest = JSON.parse(`<%- JSON.stringify(artists) %>`);
-    document.querySelector('#artists').innerHTML = showArtists(artistsTest, true);
 
-
-    // Scroll to the left or right when clicking on the arrows
-    const navwidth = document.querySelector("#navigation");
-    document.querySelector(".arrow:first-of-type").addEventListener("click", function () {
-        navwidth.scrollBy({
-            left: -200,
-            behavior: 'smooth'
-        });
-    });
-    document.querySelector(".arrow:nth-of-type(2)").addEventListener("click", function () {
-        navwidth.scrollBy({
-            left: 200,
-            behavior: 'smooth'
-        });
-    });
-
-
-    // Add active class to the current button (highlight it)
-    const navLinks = document.querySelectorAll("#navigation li");
-    navLinks.forEach(link => {
-        link.addEventListener("click", function (event) {
-            event.preventDefault();
-            const activeLinks = document.querySelectorAll("#navigation li a.active");
-            activeLinks.forEach(activeLink => {
-                activeLink.classList.remove("active");
-            });
-            this.querySelector("a").classList.add("active");
-        });
-    });
-
-
-    // Get the artists by date
-    document.querySelectorAll('#navigation li a').forEach(link => {
-        link.addEventListener('click', function (event) {
-            event.preventDefault();
-            const dataFilter = event.target.getAttribute('data-filter');
-            fetch('/lineup/getSchedules', { headers: { 'X-Filter': dataFilter } })
-                .then(response => response.json())
-                .then(data => {
-                    const artists = document.querySelector('#artists');
-                    artists.innerHTML = showArtists(data.artists, data.alphabetic);
-                })
-                .catch(error => console.log(error));
-        });
-    });
-
-
-    // Function: Get the artists by alphabetic or date
-    function showArtists(artists, alphabetic = true) {
-        let html = "";
-        //check if artists is empty
-        if (artists.length === 0)
-            return '<br> <h2 style="text-align:center"> No schedules planned for this date </h2><br>';
-
-        if (alphabetic) {
-            for (let i = 0; i < artists.length; i += 3)
-                html += '<div class="row">' +
-                    artists.slice(i, i + 3).map((artist) => `
-                        <article>
-                            <p>${artist.type} - ${artist.stage}</p>
-                        <img src="${artist.photo}" alt="${artist.photo} Image"><hr>
-                        <p>${artist.start}</p>
-                        <h2>${artist.name}</h2><hr>
-                        </article> `).join("") + "</div>";
-        }
-
-        else {
-            for (let i = 0; i < artists.length; i += 3)
-                html +=
-                    '<div class="row">' +
-                    artists.slice(i, i + 3).map((artist) =>
-                        `<article>
-              <img src="${artist.photo}" alt="${artist.photo} Image"><hr>
-              <p>${artist.type} - ${artist.stage}</p>
-              <h2>${artist.name}</h2> <hr>
-            </article> `).join("") + "</div>";
-        }
-        return html;
-    }
-
-</script>
 
 </html>
