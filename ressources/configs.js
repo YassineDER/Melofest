@@ -4,7 +4,7 @@ const db = {
     database: {
       host: 'melofest_db',
       user: 'root',
-      password: 'root',
+      password: 'blaireau',
       database: 'melofest',
     },
   };
