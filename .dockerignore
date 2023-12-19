@@ -1,2 +1,6 @@
 db_data/
 scripts/
+npm-debug.log
+Dockerfile
+.dockerignore
+.git
