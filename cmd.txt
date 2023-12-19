@@ -5,3 +5,6 @@ podman run -d --name melofest_db -p 8284:3306 -e MYSQL_DATABASE=melofest -e MYSQ
 podman image build -t melofest:1 .
 
 podman run --rm --name melofest_app -p 8285:5000 --network db_network melofest:1
+
+I���
+8.2.0����5Y>k?=o<�ےےے�ےك����������M+ae 4Bp@-�caching_sha2_password�!��ے„#08S01Got packets out of order
