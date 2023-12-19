@@ -105,3 +105,58 @@ article img:hover {
 article p:last-child {
     margin-bottom: 0;
 }
+
+/* Responsive Styles */
+
+@media (max-width: 768px) {
+    /* Styles for tablets and smaller screens */
+    #wrapper {
+        width: 100%;
+        padding: 0 20px;
+    }
+    
+    #navigation {
+        transition: none;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+    }
+    
+    #navigation li {
+        scroll-snap-align: center;
+    }
+    
+    .arrow {
+        display: none;
+    }
+    
+    article {
+        flex-basis: 100%;
+        margin-bottom: 20px;
+        padding: 16px;
+    }
+    
+    article img {
+        height: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Styles for mobile devices */
+    #wrapper {
+        padding: 0 10px;
+    }
+    
+    #navigation {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    #navigation li {
+        padding: 0 10px;
+    }
+    
+    article {
+        padding: 12px;
+    }
+}

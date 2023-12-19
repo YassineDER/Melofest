@@ -1,7 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 5.2.0
--- https://www.phpmyadmin.net/
---
 -- Hôte : 127.0.0.1:3306
 -- Généré le : mar. 18 juil. 2023 à 16:34
 -- Version du serveur : 8.0.31
@@ -20,7 +16,8 @@ SET time_zone = "+00:00";
 --
 -- Base de données : `melofest`
 --
-
+CREATE DATABASE IF NOT EXISTS melofest;
+USE melofest;
 -- --------------------------------------------------------
 
 --

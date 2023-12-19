@@ -12,6 +12,7 @@ app.use(express.static('ressources/images/'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+
 // Database connection
 const connection = mysql.createConnection(configs.database);
 connection.connect((err) => { if (err) throw err; });

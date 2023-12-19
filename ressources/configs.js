@@ -2,12 +2,13 @@
 
 const db = {
     database: {
-      host: 'localhost',
+      host: 'melofest_db',
       user: 'root',
-      password: '',
+      password: 'root',
       database: 'melofest',
     },
   };
   
+  // Export the configs object for use in other files
   module.exports = db;
   

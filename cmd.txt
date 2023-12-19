@@ -1,0 +1,3 @@
+podman network create db_network
+
+podman run --detach --name melofest_db -p 8284:3306 -e MYSQL_DATABASE=melofest -e MYSQL_ROOT_PASSWORD=root --network db_network --volume /comptes/E238898X/Melofest/db_data:mysql-entrypoint-initdb.d docker.io/mysql:latest

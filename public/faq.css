@@ -33,7 +33,6 @@ input {
 }
 
 
-/* Accordion styles */
 .tabs {
     border-radius: 8px;
     overflow: hidden;
@@ -103,3 +102,31 @@ input:checked~.tab-content {
     padding: 1em;
 }
 
+
+
+@media (max-width: 480px) {
+    /* Styles for mobile devices */
+    h1 {
+      font-size: 28px;
+    }
+  
+    h2 {
+      font-size: 20px;
+    }
+  
+    .tabs {
+      margin: 5px;
+    }
+  
+    .tab-label {
+      padding: 0.5em;
+    }
+  
+    .tab-label::after {
+      font-size: 12px;
+    }
+  
+    .tab-content {
+      padding: 0.25em;
+    }
+  }
