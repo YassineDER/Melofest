@@ -1,7 +1,6 @@
-FROM node:lts as runner
+FROM node:latest
 WORKDIR /node-express
-ENV NODE_ENV production
 COPY . .
-RUN npm ci --only=production
+RUN npm install
 EXPOSE 5000
-CMD ["node", "app.js"]
+CMD ["node", "index.js"]
