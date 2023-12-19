@@ -2,4 +2,4 @@ podman network create db_network
 
 podman run -d --name melofest_db -p 8284:3306 -e MYSQL_DATABASE=melofest -e MYSQL_ROOT_PASSWORD=root --network db_network -v /comptes/E238898X/project_devops/melofestv2/db_data:/var/lib/mysql -v /comptes/E238898X/project_devops/melofestv2/scripts:/docker-entrypoint-initdb.d mysql:latest
 
-podman image build -t melofest:1 
+podman image build -t melofest:1 .

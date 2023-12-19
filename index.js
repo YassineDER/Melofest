@@ -1,7 +1,7 @@
 // This file is the entry point of the application.
 const express = require('express');
 const app = express();
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const configs = require('./ressources/configs');
 
 //View engine setup, static files and middlewares initialization
