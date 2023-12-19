@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:alpine
 WORKDIR /node-express
 COPY . .
 RUN npm install
