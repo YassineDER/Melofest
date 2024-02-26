@@ -2,9 +2,9 @@
 
 const db = {
     database: {
-      host: 'melofest_db',
+      host: 'localhost',
       user: 'root',
-      password: 'root',
+      password: '',
       database: 'melofest',
     },
   };

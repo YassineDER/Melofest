@@ -2,4 +2,6 @@ node_modules/
 .vscode/
 .idea/
 *.iml
+*.log
+db_data/
 
